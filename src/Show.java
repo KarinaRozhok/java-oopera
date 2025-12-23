@@ -1,7 +1,6 @@
 import java.util.List;
-import java.util.ArrayList;
 
-class Show {
+public class Show {
     protected String title;
     protected int duration;
     protected Director director;
@@ -13,6 +12,7 @@ class Show {
         this.director = director;
         this.actors = actors;
     }
+
     public void printActorsList() {
         for (Actor actor : actors) {
             System.out.println(actor);
@@ -20,13 +20,20 @@ class Show {
     }
 
     public void addActor(Actor actor) {
-        actors.add(actor);}
-
- public void replaceActor(Actor oldActor, Actor newActor){
-            int index = actors.indexOf(oldActor);
-            if (index != -1) {
-                actors.set(index, newActor);
+        for (Actor existingActor : actors) {
+            if (existingActor.getName().equals(actor.getName()) && existingActor.getSurname().equals(actor.getSurname())) {
+                System.out.println("Ошибка: актёр с такой фамилией и именем уже существует в списке.");
+                return;
             }
         }
+        actors.add(actor);
+    }
+
+    public void replaceActor(Actor oldActor, Actor newActor){
+        int index = actors.indexOf(oldActor);
+        if (index != -1) {
+            actors.set(index, newActor);
         }
+    }
+}
 

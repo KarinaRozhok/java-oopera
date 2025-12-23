@@ -1,6 +1,6 @@
 import java.util.List;
 
-class MusicalShow extends Show {
+public class MusicalShow extends Show {
     protected String musicAuthor;
     protected String librettoText;
     protected List<Actor> listOfActors;
@@ -16,28 +16,5 @@ class MusicalShow extends Show {
         System.out.println(librettoText);
     }
 
-    public void addActor(Actor newActor) {
-        listOfActors.add(newActor);
-    }
 }
 
-
-class Ballet extends MusicalShow {
-    protected String choreographer;
-
-    public Ballet(String title, int duration, Director director, List<Actor> listOfActors, String musicAuthor, String librettoText, String choreographer) {
-        super(title, duration, director, listOfActors, musicAuthor, librettoText);
-        this.choreographer = choreographer;
-
-
-    }
-}
-
-class Opera extends MusicalShow {
-    protected int choirSize;
-
-    public Opera(String title, int duration, Director director, List<Actor> listOfActors, String musicAuthor, String librettoText, int choirSize) {
-        super(title, duration, director, listOfActors, musicAuthor, librettoText);
-        this.choirSize = choirSize;
-    }
-}

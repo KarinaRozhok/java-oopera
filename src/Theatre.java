@@ -3,31 +3,30 @@ import java.util.ArrayList;
 public class Theatre {
     public static void main(String[] args) {
 
-
         // Создаём актёров и режиссёров
-        Actor actor1 = new Actor("Брэд", "Питт", Person.Gender.MALE, 180);
-        Actor actor2 = new Actor("Марго", "Робби", Person.Gender.FEMALE, 170);
-        Actor actor3 = new Actor("Аль", "Пачино", Person.Gender.MALE, 190);
+        Actor actor1 = new Actor("Брэд", "Питт", Gender.MALE, 180);
+        Actor actor2 = new Actor("Марго", "Робби", Gender.FEMALE, 170);
+        Actor actor3 = new Actor("Аль", "Пачино", Gender.MALE, 190);
 
-        Director director1 = new Director("Кристофер", "Нолан", Person.Gender.MALE, 5);
-        Director director2 = new Director("Квентин", "Тарантино", Person.Gender.FEMALE, 3);
+        Director director1 = new Director("Кристофер", "Нолан", Gender.MALE, 5);
+        Director director2 = new Director("Квентин", "Тарантино", Gender.FEMALE, 3);
 
         // Создаём автора музыки и хореографа
-        Person musicAuthor = new Person("Ханс", "Циммер", Person.Gender.MALE);
-        Person choreographer = new Person("Мэттью", "Борн", Person.Gender.MALE);
+        Person musicAuthor = new Person("Ханс", "Циммер", Gender.MALE);
+        Person choreographer = new Person("Мэттью", "Борн", Gender.MALE);
         String fullName = choreographer.name + " " + choreographer.surname;
 
         // Создаём спектакли
         Show regularShow = new Show("Моя дорогая Матильда", 120, director1, new ArrayList<>());
-        Opera operaShow = new Opera("Призрак Оперы", 150, director2, new ArrayList<>(), "Автор музыки", "Текст либретто", 50);
-        Ballet balletShow = new Ballet("Спящая красавица Мэттью Борна", 120, director1, new ArrayList<>(), "Автор музыки", "Текст либретто", fullName);
+        Opera operaShow = new Opera("Призрак Оперы", 150, director2, new ArrayList<>(), musicAuthor.name + " " + musicAuthor.surname, "Текст либретто", 50);
+        Ballet balletShow = new Ballet("Спящая красавица Мэттью Борна", 120, director1, new ArrayList<>(), musicAuthor.name + " " + musicAuthor.surname, "Текст либретто", fullName);
 
         // Распределяем актёров по спектаклям
-        regularShow.addActor(actor1);
         regularShow.addActor(actor2);
+        regularShow.addActor(actor1);
 
-        operaShow.addActor(actor2);
-        operaShow.addActor(actor3);
+        operaShow.addActor(actor1);
+        operaShow.addActor(actor1);
 
         balletShow.addActor(actor1);
         balletShow.addActor(actor3);
@@ -41,8 +40,7 @@ public class Theatre {
         System.out.println("Актёры в балетном спектакле: " + balletShow.title);
         balletShow.printActorsList();
 
-
-        Actor newActor = new Actor("Леонардо", "Дикаприо", Person.Gender.MALE, 170);
+        Actor newActor = new Actor("Леонардо", "Дикаприо", Gender.MALE, 170);
 
         regularShow.replaceActor(actor1, newActor);
 

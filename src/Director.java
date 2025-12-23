@@ -1,4 +1,4 @@
-class Director extends Person {
+public class Director extends Person {
     protected int numberOfShows;
 
     public Director(String name, String surname, Gender gender, int numberOfShows) {
